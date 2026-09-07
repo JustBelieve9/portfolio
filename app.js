@@ -32,7 +32,9 @@
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
 
-    document.title = lang === 'ru' ? 'Константин — портфолио' : 'Konstantin — portfolio';
+    document.title = lang === 'ru'
+      ? 'Константин — 3D motion designer'
+      : 'Konstantin — 3D motion designer';
   }
 
   langBtns.forEach(function (b) {
@@ -66,6 +68,28 @@
   } else {
     cards.forEach(function (c) { c.classList.add('in'); });
   }
+
+  /* ── Плеер ────────────────────────────────────────── */
+  /* Превью меняем на iframe только по клику: до этого YouTube молчит. */
+  document.querySelectorAll('.player__btn').forEach(function (btn) {
+    btn.addEventListener('click', function (ev) {
+      var box = btn.closest('.player');
+      var id = btn.dataset.yt;
+      if (!box || !id) return;   // без этого ссылка просто уводит на YouTube
+      ev.preventDefault();
+
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+              '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = btn.getAttribute('aria-label') || 'YouTube';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.loading = 'lazy';
+
+      box.replaceChildren(f);
+      f.focus();
+    });
+  });
 
   /* ── Фильтры ──────────────────────────────────────── */
   var chips = document.querySelectorAll('.chip');

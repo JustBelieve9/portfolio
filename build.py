@@ -10,6 +10,25 @@ import html, pathlib
 GH = "https://github.com/JustBelieve9"
 PAGES = "https://justbelieve9.github.io"
 
+# ── Шоурил ───────────────────────────────────────────────
+# Видео лежат на YouTube (unlisted) — в репозитории только идентификаторы.
+# Плеер грузится по клику: до этого на странице лежит превью, а не iframe,
+# поэтому YouTube не тянет свои скрипты, пока их никто не попросил.
+#
+# poster="имя" — свой кадр из img/reel/имя.jpg вместо превью с ytimg.
+# ratio — пропорции плитки: "9:16" для вертикальных креативов, "16:9", "1:1".
+
+REEL_ID = "SiLq6lMpyZw"   # id шоурила: youtu.be/XXXXXXXXXXX → "XXXXXXXXXXX"
+REEL_RATIO = "9:16"       # шоурил снят вертикалью, как и сами креативы
+CHANNEL = "https://www.youtube.com/@zhaba009"
+
+SHOTS = [
+    # dict(id="XXXXXXXXXXX", ratio="9:16",
+    #      ru="Название проекта", en="Project name",
+    #      dru="Что делал я и что здесь технически сложного.",
+    #      den="What I did and what is technically hard here."),
+]
+
 # cat: blender | macos | web | bots
 PROJECTS = [
     dict(
@@ -136,6 +155,90 @@ def t(tag, ru, en, cls="", extra=""):
     return f'<{tag}{c}{extra} data-ru="{e(ru)}" data-en="{e(en)}">{e(ru)}</{tag}>'
 
 
+def thumb(vid):
+    """Превью с ytimg. maxres есть не у всех роликов — проверяем на сборке."""
+    import urllib.request
+    for name, w, h in (("maxresdefault", 1280, 720), ("hqdefault", 480, 360)):
+        url = f"https://i.ytimg.com/vi/{vid}/{name}.jpg"
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            with urllib.request.urlopen(req, timeout=5) as r:
+                if r.status == 200:
+                    return url, w, h
+        except Exception:
+            pass
+    return f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg", 480, 360
+
+
+PLAY = ('<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">'
+        '<path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>')
+
+
+def player(vid, ratio, alt_ru, alt_en, lab_ru, lab_en, poster=None, eager=False):
+    """Превью со ссылкой на ролик. С JS ссылка превращается в плеер на месте,
+    без JS — просто открывает YouTube в новой вкладке."""
+    if poster:
+        src, w, h = f"img/reel/{poster}", 1280, 720
+    else:
+        src, w, h = thumb(vid)
+    return (
+        f'<div class="player" style="--ratio:{ratio.replace(":", "/")}">'
+        f'<img class="player__shot" src="{e(src)}" width="{w}" height="{h}"'
+        f' loading="{"eager" if eager else "lazy"}" decoding="async"'
+        f' alt="{e(alt_ru)}" data-alt-ru="{e(alt_ru)}" data-alt-en="{e(alt_en)}">'
+        f'<a class="player__btn" href="https://www.youtube.com/watch?v={e(vid)}"'
+        f' target="_blank" rel="noopener" data-yt="{e(vid)}"'
+        f' aria-label="{e(lab_ru)}" data-label-ru="{e(lab_ru)}" data-label-en="{e(lab_en)}">'
+        f'{PLAY}</a></div>')
+
+
+def reel_section():
+    """Секция с шоурилом. Пока нет id — секции нет вовсе."""
+    if not REEL_ID and not SHOTS:
+        return ""
+
+    out = ['<section id="reel" class="reel">']
+    out.append(t("h2", "Шоурил", "Showreel", "reel__h"))
+    out.append(t("p", "Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук — всё моё.",
+                 "Ad creatives for mobile games: scene build, animation, physics, comp and sound — all mine.",
+                 "reel__sub"))
+
+    if REEL_ID:
+        w, h = (int(x) for x in REEL_RATIO.split(":"))
+        vert = w < h
+        out.append(f'<div class="reel__main{" reel__main--v" if vert else ""}">')
+        out.append(player(REEL_ID, REEL_RATIO,
+                          "Превью шоурила", "Showreel preview",
+                          "Смотреть шоурил", "Play showreel", eager=True))
+        out.append("</div>")
+        if CHANNEL:
+            out.append(f'<p class="reel__more"><a class="lnk" href="{e(CHANNEL)}"'
+                       f' target="_blank" rel="noopener"'
+                       f' data-ru="Все ролики на канале" data-en="Every creative on the channel">'
+                       f'Все ролики на канале'
+                       f'<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true" focusable="false">'
+                       f'<path d="M3 9L9 3M9 3H4.2M9 3v4.8" fill="none" stroke="currentColor"'
+                       f' stroke-width="1.6" stroke-linecap="square"/></svg></a></p>')
+
+    if SHOTS:
+        out.append('<ul class="shots">')
+        for sh in SHOTS:
+            out.append('<li class="shot">')
+            out.append(player(sh["id"], sh.get("ratio", "9:16"),
+                              f'Кадр из ролика: {sh["ru"]}', f'Still from: {sh["en"]}',
+                              f'Смотреть: {sh["ru"]}', f'Play: {sh["en"]}',
+                              poster=sh.get("poster")))
+            out.append('<div class="shot__body">')
+            out.append(f'<h3 class="shot__t">{e(sh["ru"])}</h3>' if sh["ru"] == sh["en"]
+                       else t("h3", sh["ru"], sh["en"], "shot__t"))
+            out.append(t("p", sh["dru"], sh["den"], "shot__d"))
+            out.append("</div></li>")
+        out.append("</ul>")
+
+    out.append("</section>")
+    return "\n".join(out)
+
+
 def card(p, i):
     cls = "card" + (" card--big" if p.get("big") else "")
     out = [f'<article class="{cls}" data-cat="{p["cat"]}" style="--i:{i}">']
@@ -188,17 +291,18 @@ chips = "\n".join(
 
 strip = "".join(f'<span>{e(x)}</span><i aria-hidden="true">◆</i>' for x in MARQUEE)
 cards = "\n".join(card(p, i) for i, p in enumerate(PROJECTS))
+reel = reel_section()
 
 page = f'''<!doctype html>
 <html lang="ru" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Константин — портфолио</title>
-<meta name="description" content="Аддоны для Blender, приложения под macOS, сайты и боты.">
+<title>Константин — 3D motion designer</title>
+<meta name="description" content="3D-креативы для мобильных игр и инструменты под них: аддоны для Blender, приложения под macOS, сайты и боты.">
 <meta name="color-scheme" content="dark light">
-<meta property="og:title" content="Константин — портфолио">
-<meta property="og:description" content="Аддоны для Blender, приложения под macOS, сайты и боты.">
+<meta property="og:title" content="Константин — 3D motion designer">
+<meta property="og:description" content="3D-креативы для мобильных игр и инструменты под них: аддоны, приложения, боты.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,6 +335,7 @@ page = f'''<!doctype html>
 <header class="top">
   <a class="top__name" href="#top"><span data-ru="Константин" data-en="Konstantin">Константин</span></a>
   <div class="top__ctl">
+    <a class="top__cv" href="cv/" data-ru="Резюме" data-en="CV">Резюме</a>
     <div class="seg" role="group" aria-label="Язык / Language">
       <button type="button" class="seg__b" data-lang="ru" aria-pressed="true">RU</button>
       <button type="button" class="seg__b" data-lang="en" aria-pressed="false">EN</button>
@@ -250,17 +355,19 @@ page = f'''<!doctype html>
   <section class="hero">
     <p class="hero__kicker" data-ru="Портфолио · 2026" data-en="Portfolio · 2026">Портфолио · 2026</p>
     <h1 class="hero__h">
-      <span class="hero__l1" data-ru="Делаю" data-en="I build">Делаю</span>
-      <span class="hero__l2" data-ru="штуки" data-en="things">штуки</span>
-      <span class="hero__l3" data-ru="которые" data-en="that I">которые</span>
-      <span class="hero__l4" data-ru="нужны мне" data-en="actually use">нужны мне</span>
+      <span class="hero__l1" data-ru="Делаю" data-en="I make">Делаю</span>
+      <span class="hero__l2" data-ru="ролики" data-en="the ads">ролики</span>
+      <span class="hero__l3" data-ru="и то, чем" data-en="and the tools">и то, чем</span>
+      <span class="hero__l4" data-ru="их делают" data-en="that make them">их делают</span>
     </h1>
     <p class="hero__sub"
-       data-ru="Аддоны для Blender, приложения под macOS, сайты и боты. Десять проектов — всё своё, без форков."
-       data-en="Blender addons, macOS apps, websites and bots. Ten projects — all mine, no forks.">
-      Аддоны для Blender, приложения под macOS, сайты и боты. Десять проектов — всё своё, без форков.
+       data-ru="3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков."
+       data-en="3D ad creatives for mobile games: environments, characters, physics, comp and sound. Plus what I build them with: Blender addons, apps and bots — all mine, no forks.">
+      3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков.
     </p>
   </section>
+
+{reel}
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee__row"><div class="marquee__grp">{strip}</div><div class="marquee__grp">{strip}</div></div>
