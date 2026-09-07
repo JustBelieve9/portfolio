@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Родин Константин — Senior 3D Motion Designer</title>
+<meta name="description" content="Senior 3D Motion Designer. Креативы для мобильных игр целиком: сцена, анимация, физика, композ, звук. Пишу свои аддоны для Blender.">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Родин Константин — Senior 3D Motion Designer">
+<meta property="og:description" content="Креативы для мобильных игр целиком: сцена, анимация, физика, композ, звук. Плюс свои инструменты автоматизации.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Unbounded:wght@700;800&display=swap">
+<link rel="stylesheet" href="cv.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23DFE104'/%3E%3Ctext x='16' y='24' font-family='monospace' font-size='22' font-weight='700' text-anchor='middle' fill='%23000'%3EK%3C/text%3E%3C/svg%3E">
+<script>
+  // Тему и язык ставим до первой отрисовки, чтобы не мигало.
+  (function () {
+    var d = document.documentElement;
+    try {
+      var th = localStorage.getItem('theme');
+      if (th === 'light' || th === 'dark') d.dataset.theme = th;
+      else if (matchMedia('(prefers-color-scheme: light)').matches) d.dataset.theme = 'light';
+      var lg = localStorage.getItem('lang');
+      d.lang = (lg === 'en' || lg === 'ru') ? lg
+        : ((navigator.language || 'ru').slice(0, 2) === 'ru' ? 'ru' : 'en');
+    } catch (err) { /* приватный режим — остаёмся на дефолте */ }
+  })();
+</script>
+</head>
+<body>
+
+<!--
+  Текст живёт в парах data-ru / data-en (внутри узла — русский вариант,
+  чтобы страница читалась и без JS). Меняешь текст — меняй в обоих местах.
+  Печать настроена в cv.css, блок @media print: A4, светлая тема, одна страница.
+-->
+
+<a class="skip" href="#main" data-ru="К содержанию" data-en="Skip to content">К содержанию</a>
+
+<div class="bar noprint">
+  <div class="seg" role="group" aria-label="Язык / Language">
+    <button type="button" class="seg__b" data-lang="ru" aria-pressed="true">RU</button>
+    <button type="button" class="seg__b" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+  <button type="button" class="icon-b" id="theme" aria-label="Сменить тему"
+          data-label-ru="Сменить тему" data-label-en="Toggle theme">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+      <circle cx="10" cy="10" r="4.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M10 1.4v2.2M10 16.4v2.2M1.4 10h2.2M16.4 10h2.2M4 4l1.6 1.6M14.4 14.4L16 16M16 4l-1.6 1.6M5.6 14.4L4 16"
+            stroke="currentColor" stroke-width="1.7" stroke-linecap="square"/>
+    </svg>
+  </button>
+  <button type="button" class="btn" id="print">
+    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+      <path d="M6 8V2.5h8V8M4 8h12v6h-3v3.5H7V14H4V8zM7 14h6" fill="none"
+            stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    </svg>
+    <span data-ru="Скачать PDF" data-en="Download PDF">Скачать PDF</span>
+  </button>
+</div>
+
+<main class="sheet" id="main">
+
+  <header class="id">
+    <h1 class="id__name" data-ru="Родин Константин" data-en="Konstantin Rodin">Родин Константин</h1>
+    <p class="id__role" data-ru="Senior 3D Motion Designer · креативы для мобильных игр"
+       data-en="Senior 3D Motion Designer · mobile game ad creatives">Senior 3D Motion Designer · креативы для мобильных игр</p>
+    <p class="id__tag"
+       data-ru="Собираю рекламный ролик целиком и в одиночку: локация, персонажи, физика, рендер, композ, UI и звук. И пишу под это свои инструменты — аддоны для Blender и автономных агентов."
+       data-en="I build an ad creative end to end, on my own: environment, characters, physics, render, comp, in-frame UI and sound. And I write my own tooling for it — Blender addons and autonomous agents.">Собираю рекламный ролик целиком и в одиночку: локация, персонажи, физика, рендер, композ, UI и звук. И пишу под это свои инструменты — аддоны для Blender и автономных агентов.</p>
+
+    <ul class="id__contacts">
+      <li><a href="mailto:i@zhustbie.ru">i@zhustbie.ru</a></li>
+      <li><a href="tel:+79220365299">+7 922 036-52-99</a></li>
+      <li><a href="https://t.me/zhustbie" rel="noopener">t.me/zhustbie</a></li>
+      <li><a href="https://justbelieve9.github.io/portfolio/" rel="noopener">justbelieve9.github.io/portfolio</a></li>
+      <li><span data-ru="Екатеринбург · удалённо / релокация" data-en="Yekaterinburg · remote / relocation">Екатеринбург · удалённо / релокация</span></li>
+    </ul>
+  </header>
+
+  <ul class="stats">
+    <li class="stat">
+      <span class="stat__n" data-ru="3 г 9 мес" data-en="3 yr 9 mo">3 г 9 мес</span>
+      <span class="stat__l" data-ru="в креативах для мобильных игр" data-en="in mobile game ad creatives">в креативах для мобильных игр</span>
+    </li>
+    <li class="stat">
+      <span class="stat__n" data-ru="Весь ролик" data-en="End to end">Весь ролик</span>
+      <span class="stat__l" data-ru="от сборки сцены до звука — без передачи по цепочке" data-en="from scene build to sound — nothing handed down a chain">от сборки сцены до звука — без передачи по цепочке</span>
+    </li>
+    <li class="stat">
+      <span class="stat__n" data-ru="Senior" data-en="Senior">Senior</span>
+      <span class="stat__l" data-ru="уровень в AppQuantum: менторство и гайды для команды" data-en="level at AppQuantum: mentoring and team guides">уровень в AppQuantum: менторство и гайды для команды</span>
+    </li>
+    <li class="stat">
+      <span class="stat__n" data-ru="Свои аддоны" data-en="Own tooling">Свои аддоны</span>
+      <span class="stat__l" data-ru="Python, MCP, генерация ассетов нейросетями" data-en="Python, MCP, AI asset generation">Python, MCP, генерация ассетов нейросетями</span>
+    </li>
+  </ul>
+
+  <section class="sec band">
+
+        <h2 class="sec__h" data-ru="Что закрываю в одном ролике" data-en="What one creative involves for me">Что закрываю в одном ролике</h2>
+        <ul class="pipe">
+          <li>
+            <span class="pipe__n">01</span>
+            <span class="pipe__t" data-ru="Локация и сцена" data-en="Environment">Локация и сцена</span>
+            <span class="pipe__d" data-ru="Окружение, свет, композиция кадра под хук" data-en="Environment, lighting, framing built around the hook">Окружение, свет, композиция кадра под хук</span>
+          </li>
+          <li>
+            <span class="pipe__n">02</span>
+            <span class="pipe__t" data-ru="Персонажи" data-en="Characters">Персонажи</span>
+            <span class="pipe__d" data-ru="Анимация и характер движения, а не перемещение" data-en="Animation with character, not just movement">Анимация и характер движения, а не перемещение</span>
+          </li>
+          <li>
+            <span class="pipe__n">03</span>
+            <span class="pipe__t" data-ru="Физика и симуляции" data-en="Physics &amp; sims">Физика и симуляции</span>
+            <span class="pipe__d" data-ru="Разрушения, ткань, частицы, тяжёлые сцены" data-en="Destruction, cloth, particles, heavy scenes">Разрушения, ткань, частицы, тяжёлые сцены</span>
+          </li>
+          <li>
+            <span class="pipe__n">04</span>
+            <span class="pipe__t" data-ru="Рендер" data-en="Render">Рендер</span>
+            <span class="pipe__d" data-ru="Cycles и EEVEE, оптимизация сцены под сроки" data-en="Cycles and EEVEE, scenes optimised for the deadline">Cycles и EEVEE, оптимизация сцены под сроки</span>
+          </li>
+          <li>
+            <span class="pipe__n">05</span>
+            <span class="pipe__t" data-ru="Постпродакшн" data-en="Post-production">Постпродакшн</span>
+            <span class="pipe__d" data-ru="Композ в After Effects, монтаж, версии под площадки" data-en="Compositing in After Effects, edit, per-network versions">Композ в After Effects, монтаж, версии под площадки</span>
+          </li>
+          <li>
+            <span class="pipe__n">06</span>
+            <span class="pipe__t" data-ru="UI в кадре" data-en="In-frame UI">UI в кадре</span>
+            <span class="pipe__d" data-ru="Интерфейс и элементы игры рисую сам" data-en="I design the game interface elements myself">Интерфейс и элементы игры рисую сам</span>
+          </li>
+          <li>
+            <span class="pipe__n">07</span>
+            <span class="pipe__t" data-ru="Саунд-дизайн" data-en="Sound design">Саунд-дизайн</span>
+            <span class="pipe__d" data-ru="Звук под монтаж, а не поверх готового" data-en="Sound cut to the edit, not laid over it">Звук под монтаж, а не поверх готового</span>
+          </li>
+          <li>
+            <span class="pipe__n">08</span>
+            <span class="pipe__t" data-ru="Ассеты через нейросети" data-en="AI-generated assets">Ассеты через нейросети</span>
+            <span class="pipe__d" data-ru="Генерация 3D и изображений вместо ручного моделинга" data-en="Generated 3D and imagery instead of modelling by hand">Генерация 3D и изображений вместо ручного моделинга</span>
+          </li>
+        </ul>
+  </section>
+
+  <div class="cols">
+
+    <div>
+      
+
+      <section class="sec">
+        <h2 class="sec__h" data-ru="Опыт работы" data-en="Experience">Опыт работы</h2>
+
+        <article class="job">
+          <div class="job__top">
+            <span class="job__co">AppQuantum</span>
+            <span class="job__when" data-ru="дек 2024 — фев 2026" data-en="Dec 2024 — Feb 2026">дек 2024 — фев 2026</span>
+          </div>
+          <p class="job__role" data-ru="Senior 3D Motion Designer" data-en="Senior 3D Motion Designer">Senior 3D Motion Designer</p>
+          <ul class="bullets">
+            <li data-ru="Делал 3D-креативы для проектов студии целиком: от разбора механики и сборки сцены до рендера, композа и звука."
+                data-en="Produced the studio's 3D ad creatives end to end: from unpacking the mechanic and building the scene through to render, compositing and sound.">Делал 3D-креативы для проектов студии целиком: от разбора механики и сборки сцены до рендера, композа и звука.</li>
+            <li data-ru="Разрабатывал и оптимизировал игровые механики для роликов — сложные симуляции и большие объёмы физики, которых не бывает в шаблонных креативах."
+                data-en="Designed and optimised the game mechanics shown in creatives — complex simulations and heavy physics you don't get from templated ads.">Разрабатывал и оптимизировал игровые механики для роликов — сложные симуляции и большие объёмы физики, которых не бывает в шаблонных креативах.</li>
+            <li data-ru="Снимал обучающие видео-гайды по пайплайну и вёл менторство дизайнеров команды."
+                data-en="Recorded pipeline video guides and mentored designers on the team.">Снимал обучающие видео-гайды по пайплайну и вёл менторство дизайнеров команды.</li>
+            <li data-ru="Собирал инструменты под задачи команды: аддоны для Blender, убирающие ручную рутину из сборки сцен и рендера."
+                data-en="Built tooling for the team's workflow: Blender addons that take the manual grind out of scene assembly and rendering.">Собирал инструменты под задачи команды: аддоны для Blender, убирающие ручную рутину из сборки сцен и рендера.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job__top">
+            <span class="job__co">Creomancer</span>
+            <span class="job__when" data-ru="апр 2022 — ноя 2024" data-en="Apr 2022 — Nov 2024">апр 2022 — ноя 2024</span>
+          </div>
+          <p class="job__role" data-ru="3D Motion Designer, фриланс" data-en="3D Motion Designer, freelance">3D Motion Designer, фриланс</p>
+          <ul class="bullets">
+            <li data-ru="Делал 3D-креативы для мобильных игр на аутсорсе — в одиночку от брифа до сдачи, без арт-директора над задачей и без готового пайплайна."
+                data-en="Made 3D creatives for mobile games as an outsourcer — solo from brief to delivery, with no art director over the task and no pipeline handed to me.">Делал 3D-креативы для мобильных игр на аутсорсе — в одиночку от брифа до сдачи, без арт-директора над задачей и без готового пайплайна.</li>
+<li data-ru="Разные жанры и заказчики, у каждого свой стиль и темп сдачи. Здесь сложился нынешний подход: переиспользуемые сцены и первые скрипты вместо ручной работы."
+              data-en="Different genres and clients, each with its own style and delivery pace. This is where my current approach took shape: reusable scenes and first scripts instead of manual work.">Разные жанры и заказчики, у каждого свой стиль и темп сдачи. Здесь сложился нынешний подход: переиспользуемые сцены и первые скрипты вместо ручной работы.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__h" data-ru="Автоматизация и нейросети" data-en="Automation &amp; AI">Автоматизация и нейросети</h2>
+        <ul class="bullets">
+          <li data-ru="Пишу аддоны для Blender на Python: повторяющиеся операции, сборка сцен и батч-рендер уходят в одну кнопку."
+              data-en="I write Blender addons in Python: repetitive operations, scene assembly and batch rendering collapse into one button.">Пишу аддоны для Blender на Python: повторяющиеся операции, сборка сцен и батч-рендер уходят в одну кнопку.</li>
+          <li data-ru="Подключаю MCP и собираю автономные инструменты — такие, которые делают часть работы сами, а не подсказывают, как её сделать."
+              data-en="I wire up MCP and build autonomous tools — ones that do part of the work themselves rather than advising how to do it.">Подключаю MCP и собираю автономные инструменты — такие, которые делают часть работы сами, а не подсказывают, как её сделать.</li>
+          <li data-ru="Генерирую ассеты нейросетями — 3D и изображения — там, где это быстрее ручного моделинга. Инструменты не лежат в столе: аддоны, приложения и боты выложены на сайте, код открыт."
+              data-en="I generate assets with AI — both 3D and imagery — wherever it beats modelling by hand. The tools aren't sitting in a drawer: addons, apps and bots are published on my site, code open.">Генерирую ассеты нейросетями — 3D и изображения — там, где это быстрее ручного моделинга. Инструменты не лежат в столе: аддоны, приложения и боты выложены на сайте, код открыт.</li>
+        </ul>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__h" data-ru="Как я работаю" data-en="How I work">Как я работаю</h2>
+        <ul class="bullets">
+          <li data-ru="Объясняю, а не только делаю: вёл менторство и записывал гайды, по которым потом работали другие."
+              data-en="I explain, not just execute: I mentored designers and recorded the guides others then worked from.">Объясняю, а не только делаю: вёл менторство и записывал гайды, по которым потом работали другие.</li>
+          <li data-ru="Работаю автономно — два с половиной года фриланса, где сроки и решения были только на мне."
+              data-en="I work autonomously — two and a half years freelance, where deadlines and decisions were mine alone.">Работаю автономно — два с половиной года фриланса, где сроки и решения были только на мне.</li>
+          <li data-ru="Узкое место в пайплайне нахожу сам и закрываю инструментом, а не терпением. Новое осваиваю на ходу: Unreal, нейросети и MCP пришли в работу именно так."
+              data-en="I find the pipeline bottleneck myself and close it with a tool, not with patience. New things I pick up on the job: Unreal, AI tooling and MCP all arrived that way.">Узкое место в пайплайне нахожу сам и закрываю инструментом, а не терпением. Новое осваиваю на ходу: Unreal, нейросети и MCP пришли в работу именно так.</li>
+          <li data-ru="Спокоен к правкам: креатив — это серия тестов, а не один финальный рендер."
+              data-en="Calm about revisions: a creative is a series of tests, not one final render.">Спокоен к правкам: креатив — это серия тестов, а не один финальный рендер.</li>
+        </ul>
+      </section>
+    </div>
+
+    <aside>
+      <section class="sec">
+        <h2 class="sec__h" data-ru="Портфолио" data-en="Portfolio">Портфолио</h2>
+        <ul class="links">
+          <li>
+            <a href="https://drive.google.com/file/d/1uQi9cu5mEfC4zXhsO9SpQxas-3a_Wv3J/view?usp=sharing" rel="noopener">
+              <b data-ru="Шоурил" data-en="Showreel">Шоурил</b>
+              <span data-ru="Смонтированный рил, 3D-креативы для мобильных игр" data-en="Edited reel — 3D ad creatives for mobile games">Смонтированный рил, 3D-креативы для мобильных игр</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/drive/folders/1ompWpY8P0w0VcyCHx4pkRHE7vA1CYTzW?usp=sharing" rel="noopener">
+              <b data-ru="Ролики по отдельности" data-en="Individual creatives">Ролики по отдельности</b>
+              <span data-ru="Все работы из рила полными версиями" data-en="Every shot from the reel, full length">Все работы из рила полными версиями</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://justbelieve9.github.io/portfolio/" rel="noopener">
+              <b data-ru="Инструменты и код" data-en="Tools &amp; code">Инструменты и код</b>
+              <span data-ru="Аддоны для Blender, приложения и боты — всё своё" data-en="Blender addons, apps and bots — all my own">Аддоны для Blender, приложения и боты — всё своё</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__h" data-ru="Инструменты" data-en="Tools">Инструменты</h2>
+
+        <div class="skill">
+          <p class="skill__h" data-ru="Blender — основной" data-en="Blender — main">Blender — основной</p>
+          <ul class="tags">
+            <li class="tag tag--key" data-ru="Анимация" data-en="Animation">Анимация</li>
+            <li class="tag tag--key" data-ru="Физика и симуляции" data-en="Physics &amp; sims">Физика и симуляции</li>
+            <li class="tag" data-ru="Шейдинг и свет" data-en="Shading &amp; light">Шейдинг и свет</li>
+            <li class="tag" data-ru="Моделинг" data-en="Modelling">Моделинг</li>
+            <li class="tag">Geometry Nodes</li>
+            <li class="tag">Cycles / EEVEE</li>
+            <li class="tag">Python API</li>
+          </ul>
+        </div>
+
+        <div class="skill">
+          <p class="skill__h" data-ru="Постпрод и графика" data-en="Post &amp; graphics">Постпрод и графика</p>
+          <ul class="tags">
+            <li class="tag tag--key">After Effects</li>
+            <li class="tag">DaVinci Resolve</li>
+            <li class="tag">Photoshop</li>
+            <li class="tag" data-ru="Саунд-дизайн" data-en="Sound design">Саунд-дизайн</li>
+          </ul>
+        </div>
+
+        <div class="skill">
+          <p class="skill__h" data-ru="Автоматизация" data-en="Automation">Автоматизация</p>
+          <ul class="tags">
+            <li class="tag tag--key" data-ru="Аддоны на Python" data-en="Python addons">Аддоны на Python</li>
+            <li class="tag">MCP</li>
+            <li class="tag" data-ru="Генерация ассетов" data-en="AI asset generation">Генерация ассетов</li>
+            <li class="tag">Unreal Engine</li>
+          </ul>
+        </div>
+      </section>
+
+      
+
+      <section class="sec">
+        <h2 class="sec__h" data-ru="О себе" data-en="Details">О себе</h2>
+        <dl class="facts">
+          <div>
+            <dt data-ru="Город" data-en="Based in">Город</dt>
+            <dd data-ru="Екатеринбург" data-en="Yekaterinburg">Екатеринбург</dd>
+          </div>
+          <div>
+            <dt data-ru="Формат" data-en="Format">Формат</dt>
+            <dd data-ru="Удалённо, гибкий график" data-en="Remote, flexible hours">Удалённо, гибкий график</dd>
+          </div>
+          <div>
+            <dt data-ru="Переезд" data-en="Relocation">Переезд</dt>
+            <dd data-ru="Возможен" data-en="Open to it">Возможен</dd>
+          </div>
+          <div>
+            <dt data-ru="Английский" data-en="English">Английский</dt>
+            <dd data-ru="B1" data-en="B1">B1</dd>
+          </div>
+          <div>
+            <dt data-ru="Год рождения" data-en="Born">Год рождения</dt>
+            <dd data-ru="2001" data-en="2001">2001</dd>
+          </div>
+        </dl>
+      </section>
+    </aside>
+
+  </div>
+
+  <p class="foot noprint"
+     data-ru="Страница печатается в A4 без правок: Cmd+P → «Сохранить как PDF», фон отключать не нужно."
+     data-en="The page prints to A4 as is: Cmd+P → Save as PDF, no need to disable backgrounds.">Страница печатается в A4 без правок: Cmd+P → «Сохранить как PDF», фон отключать не нужно.</p>
+
+</main>
+
+<script src="cv.js"></script>
+</body>
+</html>

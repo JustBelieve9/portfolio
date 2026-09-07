@@ -1,0 +1,314 @@
+/* Токены наследуют портфолио: тёмная — база, светлая перекрывает. */
+:root {
+  --bg: #0A0A0B;
+  --bg-2: #101012;
+  --fg: #F4F4F0;
+  --muted: #9A9A93;
+  --card: #131315;
+  --border: #2B2B30;
+  --line: #1E1E22;
+  --accent: #DFE104;
+  --accent-ink: #DFE104;
+  --on-accent: #000000;
+  --shadow: none;
+
+  --sp-1: 8px;  --sp-2: 16px; --sp-3: 24px;
+  --sp-4: 40px; --sp-5: 64px; --sp-6: 96px;
+
+  --f-disp: "Unbounded", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --t: 120ms cubic-bezier(.2, .7, .3, 1);
+}
+
+[data-theme="light"] {
+  --bg: #F2F2EC;
+  --bg-2: #E8E8E0;
+  --fg: #0A0A0B;
+  --muted: #55554E;
+  --card: #FFFFFF;
+  --border: #12120F;
+  --line: #D6D6CC;
+  --accent-ink: #5F6100;   /* 5.8:1 на #F2F2EC */
+  --shadow: 4px 4px 0 var(--border);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.55 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; }
+
+:where(a, button):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 50;
+  background: var(--accent); color: var(--on-accent);
+  padding: 12px 16px; font-weight: 600;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+/* ── Панель управления ──────────────────────────────── */
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: flex-end; gap: var(--sp-1);
+  padding: 12px clamp(16px, 4vw, 40px);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.seg { display: flex; border: 1px solid var(--border); }
+.seg__b {
+  min-height: 44px; min-width: 48px;
+  background: transparent; color: var(--muted);
+  border: 0; font: 500 13px/1 var(--f-mono); letter-spacing: .04em;
+  cursor: pointer; transition: color var(--t), background var(--t);
+}
+.seg__b[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.seg__b:hover:not([aria-pressed="true"]) { color: var(--fg); }
+
+.icon-b {
+  display: grid; place-items: center;
+  min-width: 44px; min-height: 44px;
+  background: transparent; color: var(--fg);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: background var(--t), color var(--t);
+}
+.icon-b:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 16px;
+  background: var(--accent); color: var(--on-accent);
+  border: 1px solid var(--accent);
+  font: 600 14px/1 var(--f-body); cursor: pointer;
+  transition: filter var(--t);
+}
+.btn:hover { filter: brightness(1.08); }
+
+/* ── Каркас ─────────────────────────────────────────── */
+.sheet {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 40px) var(--sp-6);
+}
+
+/* ── Шапка ──────────────────────────────────────────── */
+.id { border-bottom: 2px solid var(--border); padding-bottom: var(--sp-3); }
+
+.id__name {
+  margin: 0;
+  font: 800 clamp(34px, 7vw, 60px)/0.98 var(--f-disp);
+  letter-spacing: -0.02em;
+}
+
+.id__role {
+  margin: 10px 0 0;
+  font: 500 clamp(15px, 2.4vw, 19px)/1.3 var(--f-mono);
+  color: var(--accent-ink);
+  letter-spacing: .01em;
+}
+
+.id__tag { margin: 12px 0 0; max-width: 58ch; color: var(--muted); }
+
+.id__contacts {
+  display: flex; flex-wrap: wrap; gap: 6px 20px;
+  margin-top: var(--sp-3);
+  font: 500 14px/1.4 var(--f-mono);
+}
+.id__contacts a { text-decoration: none; border-bottom: 1px solid var(--border); }
+.id__contacts a:hover { border-color: var(--accent); color: var(--accent-ink); }
+.id__contacts li { display: flex; align-items: center; }
+
+/* ── Цифры ──────────────────────────────────────────── */
+.stats {
+  display: grid; gap: 1px;
+  grid-template-columns: 1fr;
+  margin: var(--sp-4) 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+/* Только 1, 2 или 4 колонки: при трёх остаётся пустая ячейка. */
+@media (min-width: 480px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { background: var(--bg); padding: var(--sp-2) var(--sp-2) 14px; }
+.stat__n {
+  display: block;
+  font: 800 clamp(24px, 4vw, 34px)/1 var(--f-disp);
+  color: var(--accent-ink);
+}
+.stat__l { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.35; }
+
+/* ── Колонки ────────────────────────────────────────── */
+.cols { display: grid; gap: var(--sp-4); }
+@media (min-width: 900px) {
+  .cols { grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); gap: var(--sp-5); }
+}
+
+.sec + .sec { margin-top: var(--sp-4); }
+
+.sec__h {
+  margin: 0 0 var(--sp-2);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font: 600 12px/1 var(--f-mono);
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Опыт ───────────────────────────────────────────── */
+.job + .job { margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--line); }
+
+.job__top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.job__co { font: 700 19px/1.25 var(--f-body); }
+.job__when { margin-left: auto; font: 500 13px/1.4 var(--f-mono); color: var(--muted); white-space: nowrap; }
+.job__role { margin: 4px 0 12px; font: 500 15px/1.3 var(--f-body); color: var(--accent-ink); }
+
+.bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 8px;
+  font-size: 15px;
+}
+.bullets li::before {
+  content: ""; position: absolute; left: 2px; top: 9px;
+  width: 7px; height: 7px; background: var(--accent);
+}
+
+/* ── Пайплайн ───────────────────────────────────────── */
+.band { margin: var(--sp-4) 0; }
+
+.pipe {
+  display: grid; gap: 1px;
+  grid-template-columns: 1fr;
+  background: var(--line); border: 1px solid var(--line);
+}
+/* Восемь пунктов: 1, 2 или 4 колонки — иначе последний ряд рваный. */
+@media (min-width: 480px) { .pipe { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .pipe { grid-template-columns: repeat(4, 1fr); } }
+
+.pipe li { background: var(--bg); padding: 12px 14px; }
+.pipe__n {
+  display: block;
+  font: 600 11px/1 var(--f-mono); letter-spacing: .12em;
+  color: var(--accent-ink);
+}
+.pipe__t { display: block; margin-top: 6px; font: 600 15px/1.25 var(--f-body); }
+.pipe__d { display: block; margin-top: 3px; font-size: 13px; line-height: 1.4; color: var(--muted); }
+
+/* ── Теги ───────────────────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  font: 500 13px/1.3 var(--f-mono);
+  color: var(--fg);
+}
+.tag--key { border-color: var(--accent); color: var(--accent-ink); }
+
+.skill + .skill { margin-top: var(--sp-2); }
+.skill__h { margin: 0 0 8px; font: 600 14px/1.3 var(--f-body); }
+
+/* ── Ссылки-карточки ────────────────────────────────── */
+.links li + li { margin-top: 10px; }
+.links a {
+  display: block; padding: 12px 14px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: transform var(--t), border-color var(--t);
+}
+.links a:hover { border-color: var(--accent); transform: translate(-2px, -2px); }
+.links b { display: block; font: 600 15px/1.3 var(--f-body); }
+.links span { display: block; margin-top: 3px; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+
+/* ── Факты ──────────────────────────────────────────── */
+.facts { font-size: 14px; }
+.facts div { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.facts dt { flex: 0 0 42%; color: var(--muted); margin: 0; }
+.facts dd { margin: 0; font-weight: 500; }
+
+.foot {
+  margin-top: var(--sp-5); padding-top: var(--sp-2);
+  border-top: 1px solid var(--line);
+  font: 400 13px/1.5 var(--f-mono); color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  .links a:hover { transform: none; }
+}
+
+/* ── Печать: чистый A4 ──────────────────────────────── */
+@page { size: A4; margin: 9mm 11mm; }
+
+@media print {
+  :root {
+    --bg: #FFFFFF; --bg-2: #FFFFFF; --fg: #000000; --muted: #444444;
+    --card: #FFFFFF; --border: #000000; --line: #BBBBBB;
+    --accent: #8A8C00; --accent-ink: #5F6100; --on-accent: #FFFFFF;
+    --shadow: none;
+  }
+  html, body { background: #FFFFFF !important; color: #000 !important; }
+  body { font-size: 9pt; line-height: 1.36; }
+
+  .bar, .skip, .foot { display: none !important; }
+  .sheet { max-width: none; margin: 0; padding: 0; }
+
+  .id__name { font-size: 21pt; }
+  .id { padding-bottom: 12px; }
+  .id__role { font-size: 10pt; }
+  .id__tag  { font-size: 8.6pt; max-width: none; margin-top: 7px; }
+  .id__contacts { margin-top: 8px; font-size: 8.4pt; gap: 2px 14px; }
+
+  .stats { margin: 8px 0; gap: 0; border-color: #BBB; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 5px 9px; border-right: 1px solid #BBB; }
+  .stat:last-child { border-right: 0; }
+  .stat__n { font-size: 13pt; }
+  .stat__l { font-size: 7.4pt; margin-top: 2px; }
+
+  .cols { grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 22px; }
+  .sec + .sec { margin-top: 8px; }
+  .sec__h { font-size: 7.6pt; margin-bottom: 6px; padding-bottom: 5px; }
+
+  .job + .job { margin-top: 8px; padding-top: 8px; }
+  .job__co { font-size: 11pt; }
+  .job__when, .job__role { font-size: 8.4pt; }
+  .job__role { margin: 1px 0 5px; }
+  .bullets li { font-size: 8.6pt; margin-top: 2px; padding-left: 12px; }
+  .bullets li::before { width: 4px; height: 4px; top: 6px; left: 0; background: #000; }
+
+  .band { margin: 8px 0; }
+  .pipe { border-color: #BBB; grid-template-columns: repeat(4, 1fr); }
+  .pipe li { padding: 3px 7px; }
+  .pipe__n { font-size: 7pt; }
+  .pipe__t { font-size: 8.4pt; margin-top: 2px; }
+  .pipe__d { font-size: 7.4pt; margin-top: 1px; line-height: 1.3; }
+
+  .tag { font-size: 7.8pt; padding: 1px 5px; }
+  .links a { padding: 0; border: 0; }
+  .links li + li { margin-top: 5px; }
+  .skill + .skill { margin-top: 8px; }
+  .skill__h { font-size: 9pt; margin-bottom: 4px; }
+  .tags { gap: 3px; }
+  .facts div { padding: 4px 0; }
+  .links b { font-size: 8.6pt; }
+  .links span { font-size: 7.6pt; }
+  .facts { font-size: 8.2pt; }
+
+  /* Ничего не рвём посередине */
+  .id, .stats, .job, .skill, .links li, .sec, .pipe li { break-inside: avoid; page-break-inside: avoid; }
+
+  a { text-decoration: none; color: #000 !important; }
+}
