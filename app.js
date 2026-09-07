@@ -33,8 +33,8 @@
     });
 
     document.title = lang === 'ru'
-      ? 'Константин — 3D motion designer'
-      : 'Konstantin — 3D motion designer';
+      ? 'Константин · 3D motion designer'
+      : 'Konstantin · 3D motion designer';
   }
 
   langBtns.forEach(function (b) {

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Константин — 3D motion designer</title>
+<title>Константин · 3D motion designer</title>
 <meta name="description" content="3D-креативы для мобильных игр и инструменты под них: аддоны для Blender, приложения под macOS, сайты и боты.">
 <meta name="color-scheme" content="dark light">
-<meta property="og:title" content="Константин — 3D motion designer">
+<meta property="og:title" content="Константин · 3D motion designer">
 <meta property="og:description" content="3D-креативы для мобильных игр и инструменты под них: аддоны, приложения, боты.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
       var lg = localStorage.getItem('lang');
       d.lang = (lg === 'en' || lg === 'ru') ? lg
         : ((navigator.language || 'ru').slice(0, 2) === 'ru' ? 'ru' : 'en');
-    } catch (err) { /* приватный режим — остаёмся на дефолте */ }
+    } catch (err) { /* приватный режим, остаёмся на дефолте */ }
     // Если app.js не доехал, снимаем .js и показываем всё как есть.
     setTimeout(function () {
       if (!d.classList.contains('ready')) d.classList.remove('js');
@@ -66,15 +66,15 @@
       <span class="hero__l4" data-ru="их делают" data-en="that make them">их делают</span>
     </h1>
     <p class="hero__sub"
-       data-ru="3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков."
-       data-en="3D ad creatives for mobile games: environments, characters, physics, comp and sound. Plus what I build them with: Blender addons, apps and bots — all mine, no forks.">
-      3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков.
+       data-ru="3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты. Всё своё, без форков."
+       data-en="3D ad creatives for mobile games: environments, characters, physics, comp and sound. Plus what I build them with: Blender addons, apps and bots. All mine, no forks.">
+      3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты. Всё своё, без форков.
     </p>
   </section>
 
 <section id="reel" class="reel">
 <h2 class="reel__h" data-ru="Шоурил" data-en="Showreel">Шоурил</h2>
-<p class="reel__sub" data-ru="Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук — всё моё." data-en="Ad creatives for mobile games: scene build, animation, physics, comp and sound — all mine.">Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук — всё моё.</p>
+<p class="reel__sub" data-ru="Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук. Всё моё." data-en="Ad creatives for mobile games: scene build, animation, physics, comp and sound. All mine.">Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук. Всё моё.</p>
 <div class="reel__main reel__main--v">
 <div class="player" style="--ratio:9/16"><img class="player__shot" src="https://i.ytimg.com/vi/SiLq6lMpyZw/hqdefault.jpg" width="480" height="360" loading="eager" decoding="async" alt="Превью шоурила" data-alt-ru="Превью шоурила" data-alt-en="Showreel preview"><a class="player__btn" href="https://www.youtube.com/watch?v=SiLq6lMpyZw" target="_blank" rel="noopener" data-yt="SiLq6lMpyZw" aria-label="Смотреть шоурил" data-label-ru="Смотреть шоурил" data-label-en="Play showreel"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></a></div>
 </div>
@@ -123,7 +123,7 @@
 <h3 class="card__title">Blender Launcher</h3>
 <div class="card__badges"><span class="badge badge--ver">v1.2.0</span></div>
 </div>
-<p class="card__desc" data-ru="macOS не открывает второй Blender — этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска." data-en="macOS refuses to open a second Blender — this launcher does. And it shows your projects and autosaves before Blender even starts.">macOS не открывает второй Blender — этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска.</p>
+<p class="card__desc" data-ru="macOS не открывает второй Blender, а этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска." data-en="macOS refuses to open a second Blender. This launcher does. And it shows your projects and autosaves before Blender even starts.">macOS не открывает второй Blender, а этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска.</p>
 <ul class="tags"><li>Swift</li><li>SwiftUI</li><li>AppKit</li></ul>
 <ul class="links"><li><a class="lnk" href="https://github.com/JustBelieve9/blender-launcher" target="_blank" rel="noopener" data-ru="Код" data-en="Source">Код<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 9L9 3M9 3H4.2M9 3v4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li><li><a class="lnk" href="https://justbelieve9.github.io/blender-launcher/" target="_blank" rel="noopener" data-ru="Сайт" data-en="Site">Сайт<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 9L9 3M9 3H4.2M9 3v4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li><li><a class="lnk" href="https://github.com/JustBelieve9/blender-launcher/releases/latest" target="_blank" rel="noopener" data-ru="Скачать" data-en="Download">Скачать<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 9L9 3M9 3H4.2M9 3v4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li></ul>
 </div></article>
@@ -175,14 +175,14 @@
 <h3 class="card__title">crosspost-worker</h3>
 <div class="card__badges"><span class="badge badge--priv" data-ru="приватный" data-en="private">приватный</span></div>
 </div>
-<p class="card__desc" data-ru="Написал один раз — ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера." data-en="Compose once, and it lands in Telegram, VK, Instagram and Threads. OAuth and media upload live entirely inside the worker.">Написал один раз — ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера.</p>
+<p class="card__desc" data-ru="Написал один раз, и ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера." data-en="Compose once, and it lands in Telegram, VK, Instagram and Threads. OAuth and media upload live entirely inside the worker.">Написал один раз, и ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера.</p>
 <ul class="tags"><li>TypeScript</li><li>Cloudflare Workers</li><li>OAuth</li></ul>
 </div></article>
 <article class="card" data-cat="web" style="--i:8">
 <div class="card__shot"><img src="img/studiosite.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Главная сайта двух Blender-аддонов" data-alt-ru="Главная сайта двух Blender-аддонов" data-alt-en="Home page of the two-addon site"></div>
 <div class="card__body">
 <div class="card__head">
-<h3 class="card__title" data-ru="Box3D · Studio — сайт" data-en="Box3D · Studio — site">Box3D · Studio — сайт</h3>
+<h3 class="card__title" data-ru="Сайт Box3D · Studio" data-en="Box3D · Studio site">Сайт Box3D · Studio</h3>
 </div>
 <p class="card__desc" data-ru="Обзорный сайт обоих аддонов: три раздела на клиентском роутинге, один самодостаточный файл, ноль зависимостей." data-en="The overview site for both addons: three sections on client-side routing, one self-contained file, zero dependencies.">Обзорный сайт обоих аддонов: три раздела на клиентском роутинге, один самодостаточный файл, ноль зависимостей.</p>
 <ul class="tags"><li>HTML</li><li>CSS</li><li>Vanilla JS</li></ul>

@@ -56,8 +56,8 @@ PROJECTS = [
     dict(
         id="blender-launcher", cat="macos", big=True, img="launcher",
         ru="Blender Launcher", en="Blender Launcher",
-        dru="macOS не открывает второй Blender — этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска.",
-        den="macOS refuses to open a second Blender — this launcher does. And it shows your projects and autosaves before Blender even starts.",
+        dru="macOS не открывает второй Blender, а этот лаунчер открывает. И показывает проекты с автосейвами ещё до запуска.",
+        den="macOS refuses to open a second Blender. This launcher does. And it shows your projects and autosaves before Blender even starts.",
         alt_ru="Окно Blender Launcher: слева проекты, справа автосейвы",
         alt_en="Blender Launcher window: projects on the left, autosaves on the right",
         meta="v1.2.0", tags=["Swift", "SwiftUI", "AppKit"],
@@ -109,13 +109,13 @@ PROJECTS = [
     dict(
         id="crosspost", cat="bots", img=None, private=True,
         ru="crosspost-worker", en="crosspost-worker",
-        dru="Написал один раз — ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера.",
+        dru="Написал один раз, и ушло в Telegram, VK, Instagram и Threads. OAuth и загрузка медиа целиком внутри воркера.",
         den="Compose once, and it lands in Telegram, VK, Instagram and Threads. OAuth and media upload live entirely inside the worker.",
         tags=["TypeScript", "Cloudflare Workers", "OAuth"], links=[],
     ),
     dict(
         id="studio-site", cat="web", img="studiosite",
-        ru="Box3D · Studio — сайт", en="Box3D · Studio — site",
+        ru="Сайт Box3D · Studio", en="Box3D · Studio site",
         dru="Обзорный сайт обоих аддонов: три раздела на клиентском роутинге, один самодостаточный файл, ноль зависимостей.",
         den="The overview site for both addons: three sections on client-side routing, one self-contained file, zero dependencies.",
         alt_ru="Главная сайта двух Blender-аддонов",
@@ -199,8 +199,8 @@ def reel_section():
 
     out = ['<section id="reel" class="reel">']
     out.append(t("h2", "Шоурил", "Showreel", "reel__h"))
-    out.append(t("p", "Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук — всё моё.",
-                 "Ad creatives for mobile games: scene build, animation, physics, comp and sound — all mine.",
+    out.append(t("p", "Ролики для мобильных игр: сборка сцены, анимация, физика, композ и звук. Всё моё.",
+                 "Ad creatives for mobile games: scene build, animation, physics, comp and sound. All mine.",
                  "reel__sub"))
 
     if REEL_ID:
@@ -298,10 +298,10 @@ page = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Константин — 3D motion designer</title>
+<title>Константин · 3D motion designer</title>
 <meta name="description" content="3D-креативы для мобильных игр и инструменты под них: аддоны для Blender, приложения под macOS, сайты и боты.">
 <meta name="color-scheme" content="dark light">
-<meta property="og:title" content="Константин — 3D motion designer">
+<meta property="og:title" content="Константин · 3D motion designer">
 <meta property="og:description" content="3D-креативы для мобильных игр и инструменты под них: аддоны, приложения, боты.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -321,7 +321,7 @@ page = f'''<!doctype html>
       var lg = localStorage.getItem('lang');
       d.lang = (lg === 'en' || lg === 'ru') ? lg
         : ((navigator.language || 'ru').slice(0, 2) === 'ru' ? 'ru' : 'en');
-    }} catch (err) {{ /* приватный режим — остаёмся на дефолте */ }}
+    }} catch (err) {{ /* приватный режим, остаёмся на дефолте */ }}
     // Если app.js не доехал, снимаем .js и показываем всё как есть.
     setTimeout(function () {{
       if (!d.classList.contains('ready')) d.classList.remove('js');
@@ -361,9 +361,9 @@ page = f'''<!doctype html>
       <span class="hero__l4" data-ru="их делают" data-en="that make them">их делают</span>
     </h1>
     <p class="hero__sub"
-       data-ru="3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков."
-       data-en="3D ad creatives for mobile games: environments, characters, physics, comp and sound. Plus what I build them with: Blender addons, apps and bots — all mine, no forks.">
-      3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты — всё своё, без форков.
+       data-ru="3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты. Всё своё, без форков."
+       data-en="3D ad creatives for mobile games: environments, characters, physics, comp and sound. Plus what I build them with: Blender addons, apps and bots. All mine, no forks.">
+      3D-креативы для мобильных игр: локация, персонажи, физика, композ и звук. И то, чем я их собираю: аддоны для Blender, приложения и боты. Всё своё, без форков.
     </p>
   </section>
 
