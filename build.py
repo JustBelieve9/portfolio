@@ -73,8 +73,7 @@ PROJECTS = [
         alt_ru="Приложение «Тренировка»: список упражнений и таймер отдыха",
         alt_en="The Gym app: exercise list and rest timer",
         tags=["JavaScript", "CSS", "localStorage"],
-        links=[("demo", f"{PAGES}/gym/"), ("repo", f"{GH}/gym"),
-               ("case", f"{PAGES}/gym-case/")],
+        links=[("demo", f"{PAGES}/gym/"), ("repo", f"{GH}/gym")],
     ),
     dict(
         id="golf", cat="web", img="golf",
